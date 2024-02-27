@@ -1,0 +1,49 @@
+@startuml mascota 
+
+class Mascota 
+class Alimento
+class Carne
+class Juguete
+class Pelota
+class Casa
+class Habitacion
+class Cama
+class Cobija
+class Vehiculo
+class Carro
+class Ropa
+class Sueter
+class Gorra
+class Hueso
+class Minijuego
+class Futbol
+class Piano
+class Camioneta
+class Baquetbol
+class Correa
+
+
+Alimento --o Mascota
+Mascota o-- Juguete
+Carne --|> Alimento
+Pelota --|> Juguete
+Casa --o Mascota
+Casa *-- Habitacion
+Habitacion *-- Cama
+Cama *-- Cobija
+Vehiculo --o Mascota
+Carro --|> Vehiculo
+Ropa --o Mascota
+Sueter --|> Ropa
+Gorra --|> Ropa
+Hueso --|> Alimento
+Mascota o-- Minijuego
+Futbol --|> Minijuego
+Pelota --o Futbol
+Piano --> Juguete
+Camioneta --> Vehiculo
+Baquetbol --> Minijuego
+Correa --* Mascota
+
+
+@enduml
