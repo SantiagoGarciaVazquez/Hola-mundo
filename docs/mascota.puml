@@ -1,49 +1,83 @@
 @startuml mascota 
 
-class Mascota 
-class Alimento
-class Carne
-class Juguete
-class Pelota
-class Casa
-class Habitacion
-class Cama
-class Cobija
+package Mascota{
+class Mascota{
+}
 class Vehiculo
-class Carro
-class Ropa
-class Sueter
-class Gorra
-class Hueso
-class Minijuego
-class Futbol
+}
+
+package Hogar{
+class Casa{
+    -habitacion:Habitacion
+    +Decorar(Habitacion)
+}
+class Habitacion{}
+    -cama:Cama
+    +Tender(Cama)
+    }
 class Piano
-class Camioneta
-class Baquetbol
+class Cama{
+    -cobija:Cobija
+    +Tender(Cobija)
+    }
+class Cobija
+}
+
+package Prendas{
+class Ropa
+class Sueter{
+    -gorra:Gorra
+    +Usar(Gorra)
+}
+class Gorra
 class Correa
 
 
-Alimento --o Mascota
-Mascota o-- Juguete
-Carne --|> Alimento
+}
+
+package Juguete{
+class Juguete
+class Pelota
+class Carro
+class Camioneta
+}
+
+package Juegos{
+class Minijuego
+class Futbol
+class Baquetbol
+}
+
+package Alimento{
+class Alimento{
+    -carne:Carne
+    +Comer(Alimento)
+}
+class Carne
+class Hueso
+}
+
+Alimento "1*" --o "1" Mascota
+Mascota "1" o-- "*" Juguete
+Carne  --|> Alimento
 Pelota --|> Juguete
-Casa --o Mascota
-Casa *-- Habitacion
-Habitacion *-- Cama
-Cama *-- Cobija
-Vehiculo --o Mascota
-Carro --|> Vehiculo
-Ropa --o Mascota
+Casa "*" --o "1" Mascota
+Casa "1" --o "*" Habitacion
+Habitacion "1" o-- "1" Cama
+Cama "1" *-- "3" Cobija
+Vehiculo "*" --o "1" Mascota
+Carro --|>  Vehiculo
+Ropa "*" --o "1" Mascota
 Sueter --|> Ropa
 Gorra --|> Ropa
 Hueso --|> Alimento
-Mascota o-- Minijuego
+Mascota "1" o-- "*" Minijuego
 Futbol --|> Minijuego
-Pelota --o Futbol
+Pelota "1" --o "1" Futbol
 Piano --> Juguete
 Camioneta --> Vehiculo
 Baquetbol --> Minijuego
-Correa --* Mascota
+Correa "1" --o "1"Mascota
 
 
 @enduml
