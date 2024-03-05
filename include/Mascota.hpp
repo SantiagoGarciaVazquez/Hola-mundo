@@ -1,16 +1,19 @@
 #pragma once
 #include <Alimento.hpp>
+#include<string>
 
 class Mascota
 {
 private:
     //Implementacion oculta
     int Energia;
+    std::string nombre;
     int Felicidad;
 public:
 //Interfaz
-    Mascota() {
+    Mascota(std::string nombre) {
         this->Energia = 0;
+        this->nombre = nombre;
         this->Felicidad = 0;
     }
     ~Mascota() {}
@@ -26,5 +29,8 @@ public:
     }
     int LeerEnergia(){
         return this->Energia;
+    }
+    std::string LeerNombre(){
+        return this->nombre;
     }
 };
